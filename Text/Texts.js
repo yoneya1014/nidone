@@ -6,7 +6,7 @@ class Texts {
 
     //時間が設定されているか
     static isTime(userId) {
-        return true
+        return false
     }
 
     static getResponse(text = "", emotion = "Usually") {
