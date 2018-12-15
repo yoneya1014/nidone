@@ -39,7 +39,7 @@ server.post('/webhook', line.middleware(line_config), (req, res, next) => {
             // ユーザーからのテキストメッセージが「こんにちは」だった場合のみ反応。
             if (message){
                 //DBに格納
-                console.log(event.source.userId)
+                console.log(event.source.userId, event.timestamp, event.message.text)
                 events_processed.push(PostTimeStamp.setTimestamp(event.timestamp, event.source.userId, event.message.text))
 
                 // replyMessage()で返信し、そのプロミスをevents_processedに追加。

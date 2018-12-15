@@ -9,12 +9,11 @@ class PostTimeStamp {
             let query = "INSERT INTO post_timestamp (timestamp, userid, value) VALUES (?,?,?)"
             connection.query(query, [timestamp, userId, value], function(err, rows) {
                 if(err) {
-                    console.log(err.message)
                     connection.end()
-                    resolve(false)
+                    resolve()
                 } else {
                     connection.end()
-                    resolve(true)
+                    resolve()
                 }
             }
         )})
@@ -30,6 +29,7 @@ class PostTimeStamp {
                     console.log(rows)
                 })
             connection.end()
+            resolve()
         })
     }
 }
