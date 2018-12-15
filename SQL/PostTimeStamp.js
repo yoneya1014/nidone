@@ -4,10 +4,10 @@ class PostTimeStamp {
     constructor() {
     }
 
-    static setTimestamp(timestamp, userId, value) {
+    static setTimestamp(userId, value) {
         return new Promise((resolve, reject) => {
-            let query = "INSERT INTO post_timestamp (timestamp, userid, value) VALUES (?,?,?)"
-            connection.query(query, [timestamp, userId, value], function(err, rows) {
+            let query = "INSERT INTO post_timestamp (userid, value) VALUES (?,?)"
+            connection.query(query, [userId, value], function(err, rows) {
                 if(err) {
                     resolve()
                 }
@@ -29,5 +29,7 @@ class PostTimeStamp {
         })
     }
 }
+
+PostTimeStamp.getTimeStamp()
 
 module.exports = PostTimeStamp
