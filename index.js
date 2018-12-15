@@ -2,7 +2,7 @@
 // モジュールのインポート
 const server = require("express")();
 const line = require("@line/bot-sdk"); // Messaging APIのSDKをインポート
-const Texts = require('./Texts')
+const Texts = require('./Text/Texts'); //返信メッセージ取得クラス
 
 // -----------------------------------------------------------------------------
 // パラメータ設定
@@ -29,7 +29,7 @@ server.post('/webhook', line.middleware(line_config), (req, res, next) => {
     // イベントオブジェクトを順次処理。
     req.body.events.forEach((event) => {
         // この処理の対象をイベントタイプがメッセージで、かつ、テキストタイプだった場合に限定。
-        if (event.type == "message" && event.message.type == "text"){
+        if (event.type == "message" && event.message.type == "text") {
             const message = Texts.getResponse(event.message.text);
             console.log(req.body.events[0].source.userId)
 
