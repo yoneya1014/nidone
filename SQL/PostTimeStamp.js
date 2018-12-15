@@ -31,6 +31,7 @@ class PostTimeStamp {
         })
     }
 }
+
 // Uf9a4df10d3b87634b3996a01163c81eb 1544901570869 おやすみなさい
 //PostTimeStamp.setTimestamp('Uf9a4df10d3b87634b3996a01163c81eb', '1544901570869', 'eeeee')
 //PostTimeStamp.getTimeStamp()
