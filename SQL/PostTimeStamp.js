@@ -23,12 +23,12 @@ class PostTimeStamp {
     static getTimeStamp() {
         return new Promise((resolve, reject) => {
             let query = 'SELECT * FROM post_timestamp;'
-        connection.query(query, function(err, rows) {
-            if(err) {
-                console.log(err.message)
-            }
-                console.log(rows)
-            })
+            connection.query(query, function(err, rows) {
+                if(err) {
+                    console.log(err.message)
+                }
+                    console.log(rows)
+                })
             connection.end()
         })
     }
