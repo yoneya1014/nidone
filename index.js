@@ -14,8 +14,6 @@ const line_config = {
 // -----------------------------------------------------------------------------
 // Webサーバー設定
 server.listen(process.env.PORT || 3000);
-
-console.log("Create bot Instance")
 //APIコールのためのクライアントインスタンス
 const bot = new line.Client(line_config);
 
@@ -33,6 +31,7 @@ server.post('/webhook', line.middleware(line_config), (req, res, next) => {
         // この処理の対象をイベントタイプがメッセージで、かつ、テキストタイプだった場合に限定。
         if (event.type == "message" && event.message.type == "text"){
             const message = Texts.getResponse(event.message.text);
+            console.log(req.body)
 
             // ユーザーからのテキストメッセージが「こんにちは」だった場合のみ反応。
             if (message){
