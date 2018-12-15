@@ -36,3 +36,5 @@ function emotionJudge(emotion) {
         return "Bad"
     }
 }
+
+module.exports = Emotion
