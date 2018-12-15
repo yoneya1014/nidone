@@ -2,7 +2,7 @@
 // モジュールのインポート
 const server = require("express")();
 const line = require("@line/bot-sdk"); // Messaging APIのSDKをインポート
-const Texts = require('./Texts');
+const Texts = require('./Texts')
 
 // -----------------------------------------------------------------------------
 // パラメータ設定

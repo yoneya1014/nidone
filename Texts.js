@@ -14,4 +14,4 @@ class Texts {
     }
 }
 
-console.log(Texts.getResponse("おはよう","Good"));
+module.exports = Texts
