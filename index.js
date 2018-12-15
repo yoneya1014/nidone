@@ -15,7 +15,7 @@ const line_config = {
 server.listen(process.env.PORT || 3000);
 
 //APIコールのためのクライアントインスタンス
-const bot = new line.Client(line_config);
+//const bot = new line.Client(line_config);
 
 // -----------------------------------------------------------------------------
 // ルーター設定
@@ -23,7 +23,7 @@ server.post('/webhook', line.middleware(line_config), (req, res, next) => {
     res.sendStatus(200);
     
     //すべてのイベント処理のプロミスを格納する配列
-    let events_processed = [];
+    /*let events_processed = [];
 
     req.body.events.forEach((event) => {
         //この処理の対象をイベントタイプがメッセージかるテキストタイプで限定
@@ -42,7 +42,7 @@ server.post('/webhook', line.middleware(line_config), (req, res, next) => {
         (response) => {
             console.log(`${response.length} event(s) processed.`);
         }
-    );
+    );*/
 });
 
 server.get('/', (req, res, next) => {
