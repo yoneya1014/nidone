@@ -4,6 +4,7 @@ const server = require("express")();
 const line = require("@line/bot-sdk"); // Messaging APIのSDKをインポート
 const Texts = require('./Text/Texts'); //返信メッセージ取得クラス
 const Emotion = require('./Data/Emotion');
+const PostTimeStamp = require('./SQL/PostTimeStamp');
 
 // -----------------------------------------------------------------------------
 // パラメータ設定
@@ -37,6 +38,9 @@ server.post('/webhook', line.middleware(line_config), (req, res, next) => {
 
             // ユーザーからのテキストメッセージが「こんにちは」だった場合のみ反応。
             if (message){
+                //DBに格納
+                console.log(event)
+
                 // replyMessage()で返信し、そのプロミスをevents_processedに追加。
                 events_processed.push(bot.replyMessage(event.replyToken, {
                     type: "text",
