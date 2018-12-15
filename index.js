@@ -21,6 +21,10 @@ const bot = new line.Client(line_config);
 // -----------------------------------------------------------------------------
 // ルーター設定
 server.post('/webhook', line.middleware(line_config), (req, res, next) => {
+    // 先行してLINE側にステータスコード200でレスポンスする。
+    res.sendStatus(200);
+
+    console.log(req.body.events)
     // すべてのイベント処理のプロミスを格納する配列。
     let events_processed = [];
 
@@ -43,8 +47,6 @@ server.post('/webhook', line.middleware(line_config), (req, res, next) => {
     Promise.all(events_processed).then(
         (response) => {
             console.log(`${response.length} event(s) processed.`);
-            // 先行してLINE側にステータスコード200でレスポンスする。
-            res.sendStatus(200);
         }
     );
 });
