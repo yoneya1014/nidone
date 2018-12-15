@@ -29,7 +29,7 @@ server.post('/webhook', line.middleware(line_config), (req, res, next) => {
     let events_processed = [];
 
     // イベントオブジェクトを順次処理。
-    req.body.events.forEach(async function (event) {
+    req.body.events.forEach((event) => {
         // この処理の対象をイベントタイプがメッセージで、かつ、テキストタイプだった場合に限定。
         if (event.type == "message" && event.message.type == "text") {
             const userId = req.body.events[0].source.userId
@@ -40,7 +40,8 @@ server.post('/webhook', line.middleware(line_config), (req, res, next) => {
             if (message){
                 //DBに格納
                 console.log(event.source.userId, event.timestamp, event.message.text)
-                await PostTimeStamp.setTimestamp(event.timestamp, event.source.userId, event.message.text)
+                //PostTimeStamp.setTimestamp(event.timestamp, event.source.userId, event.message.text)
+                events_processed.push(PostTimeStamp.setTimestamp(event.timestamp, event.message.text))
 
                 // replyMessage()で返信し、そのプロミスをevents_processedに追加。
                 events_processed.push(bot.replyMessage(event.replyToken, {
