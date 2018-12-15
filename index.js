@@ -14,9 +14,10 @@ const line_config = {
 // Webサーバー設定
 server.listen(process.env.PORT || 3000);
 
+console.log("Create bot Instance")
 //APIコールのためのクライアントインスタンス
 const bot = new line.Client(line_config);
-
+console.log("Created bot Instance")
 // -----------------------------------------------------------------------------
 // ルーター設定
 server.post('/webhook', line.middleware(line_config), (req, res, next) => {
