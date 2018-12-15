@@ -26,8 +26,7 @@ class PostTimeStamp {
                 if(err) {
                     console.log(err.message)
                 }
-                    console.log(rows)
-                })
+            })
             connection.end()
             resolve()
         })
