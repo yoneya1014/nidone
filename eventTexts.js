@@ -8,7 +8,7 @@ module.exports = [
         }
     },
     {
-        "Message": "こんにちは",
+        "Message": "おやすみ",
         "Response": {
             "Good": "おやすみなさい♪",
             "Usually": "おやすみー",
