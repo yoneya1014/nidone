@@ -9,12 +9,10 @@ class PostTimeStamp {
             let query = "INSERT INTO post_timestamp (timestamp, userid, value) VALUES (?,?,?)"
             connection.query(query, [timestamp, userId, value], function(err, rows) {
                 if(err) {
-                    connection.end()
-                    resolve()
-                } else {
-                    connection.end()
                     resolve()
                 }
+                connection.end()
+                resolve()
             }
         )})
     }
@@ -26,13 +24,15 @@ class PostTimeStamp {
                 if(err) {
                     console.log(err.message)
                 }
+                console.log(rows)
             })
             connection.end()
             resolve()
         })
     }
 }
-
+// Uf9a4df10d3b87634b3996a01163c81eb 1544901570869 おやすみなさい
+//PostTimeStamp.setTimestamp('Uf9a4df10d3b87634b3996a01163c81eb', '1544901570869', 'おやすみなさい')
 PostTimeStamp.getTimeStamp()
 
 module.exports = PostTimeStamp
