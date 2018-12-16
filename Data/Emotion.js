@@ -14,7 +14,12 @@ class Emotion {
         } else {
             console.log("emotionPoints" ,emotionPoints[userId]["emotion"])
             //判定する処理でemotionの値を変える
-            emotionPoints[userId]["emotion"] -= 1
+            if (emotionPoints[userId]["emotion"] > 0)
+                emotionPoints[userId]["emotion"] -= 1
+            /*
+            if (emotionPoints[userId]["emotion"] < 10)
+                emotionPoints[userId]["emotion"] += 1
+            */
         }
 
         this._emotion = emotionPoints[userId].emotion
