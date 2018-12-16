@@ -13,6 +13,7 @@ class Emotion {
             }
         } else {
             //判定する処理でemotionの値を変える
+            emotionPoints[userId]["emotion"] -= 1
         }
 
         this._emotion = emotionPoints[userId].emotion

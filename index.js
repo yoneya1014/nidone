@@ -38,14 +38,14 @@ server.post('/webhook', line.middleware(line_config), (req, res, next) => {
 
             Texts.isTime(userId).then((isTime) => {
                 if(isTime) {
+                    console.log("emotion", emotion.emotion)
                     const message = Texts.getResponse(event.message.text, emotion.emotion)
     
-                    // ユーザーからのテキストメッセージが「こんにちは」だった場合のみ反応。
+                    // ユーザーからのテキストメッセージが「おはよう　おやすみ」だった場合のみ反応。
                     if (message){
                         //DBに格納
-                        console.log(event.source.userId, event.timestamp, event.message.text)
-                        //PostTimeStamp.setTimestamp(event.timestamp, event.source.userId, event.message.text)
                         events_processed.push(PostTimeStamp.setTimestamp(event.source.userId,event.message.text))
+                        Texts.
     
                         // replyMessage()で返信し、そのプロミスをevents_processedに追加。
                         events_processed.push(bot.replyMessage(event.replyToken, {
