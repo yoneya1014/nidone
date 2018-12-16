@@ -44,7 +44,6 @@ server.post('/webhook', line.middleware(line_config), (req, res, next) => {
                     if (message){
                         //DBに格納
                         events_processed.push(PostTimeStamp.setTimestamp(event.source.userId,event.message.text))
-                        Texts.
     
                         // replyMessage()で返信し、そのプロミスをevents_processedに追加。
                         events_processed.push(bot.replyMessage(event.replyToken, {
