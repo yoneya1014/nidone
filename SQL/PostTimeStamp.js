@@ -4,7 +4,7 @@ class PostTimeStamp {
     constructor() {
     }
 
-    async static setTimestamp(userId, value) {
+    static setTimestamp(userId, value) {
         return new Promise((resolve, reject) => {
             let query = "INSERT INTO post_timestamp (userid, value) VALUES (?,?)"
             connection.query(query, [userId, value], function(err, rows) {
