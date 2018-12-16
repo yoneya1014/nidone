@@ -38,7 +38,6 @@ server.post('/webhook', line.middleware(line_config), (req, res, next) => {
 
             Texts.isTime(userId).then((isTime) => {
                 if(isTime) {
-                    console.log("emotion", emotion.emotion)
                     const message = Texts.getResponse(event.message.text, emotion.emotion)
     
                     // ユーザーからのテキストメッセージが「おはよう　おやすみ」だった場合のみ反応。
