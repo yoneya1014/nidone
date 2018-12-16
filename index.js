@@ -35,6 +35,32 @@ server.post('/webhook', line.middleware(line_config), (req, res, next) => {
             const userId = req.body.events[0].source.userId
             const emotion = new Emotion(userId)
 
+
+            Texts.isTime(userId).then((isTime) => {
+                if(isTime) {
+                    const message = Texts.getResponse(event.message.text, emotion.emotion)
+    
+                    // ユーザーからのテキストメッセージが「こんにちは」だった場合のみ反応。
+                    if (message){
+                        //DBに格納
+                        console.log(event.source.userId, event.timestamp, event.message.text)
+                        //PostTimeStamp.setTimestamp(event.timestamp, event.source.userId, event.message.text)
+                        events_processed.push(PostTimeStamp.setTimestamp(event.source.userId,event.message.text))
+    
+                        // replyMessage()で返信し、そのプロミスをevents_processedに追加。
+                        events_processed.push(bot.replyMessage(event.replyToken, {
+                            type: "text",
+                            text: message
+                        }))
+                    }
+                } else {
+                    events_processed.push(bot.replyMessage(event.replyToken, {
+                        type: "text",
+                        text: "起床時間と就寝時間を教えてね"
+                    }))
+                }
+            })
+            /*
             if(Texts.isTime()) {
                 const message = Texts.getResponse(event.message.text, emotion.emotion)
 
@@ -56,7 +82,7 @@ server.post('/webhook', line.middleware(line_config), (req, res, next) => {
                     type: "text",
                     text: "起床時間と就寝時間を教えてね"
                 }))
-            }
+            }*/
         }
     });
 
