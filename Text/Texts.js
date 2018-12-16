@@ -9,7 +9,7 @@ class Texts {
    static isTime(userId) {
        return new Promise((resolve) => {
         LifeCycle.getLifeCycle(userId).then((arr) => {
-            if(arr[0]) {
+            if(arr) {
                 console.log("arr has")
                 resolve(true)
             } else {
